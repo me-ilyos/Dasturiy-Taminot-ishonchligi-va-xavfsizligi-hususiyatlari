@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        .form-container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .form-group { margin-bottom: 15px; }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="link">
+            <a href="register.html">Don't have an account? Register</a>
+        </div>
+    </div>
+
+    <script>
+        console.log('Login page loaded');
+
+        function addLog(action, username, password, success, details = '') {
+            const logEntry = {
+                timestamp: new Date().toLocaleString(),
+                action: action,
+                username: username,
+                password: password,
+                success: success,
+                details: details
+            };
+
+            let logs = [];
+            const existingLogs = localStorage.getItem('logs');
+            if (existingLogs) {
+                logs = JSON.parse(existingLogs);
+            }
+
+            logs.push(logEntry);
+            localStorage.setItem('logs', JSON.stringify(logs));
+
+            // Console logging
+            console.log('------------------------');
+            console.log('New Activity Log:');
+            console.log('Time:', logEntry.timestamp);
+            console.log('Action:', logEntry.action);
+            console.log('Credentials used:');
+            console.log('  Username:', logEntry.username);
+            console.log('  Password:', logEntry.password);
+            console.log('Success:', logEntry.success);
+            console.log('Details:', logEntry.details);
+            console.log('------------------------');
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Login attempt started');
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            console.log('Current registered users:', users);
+
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                console.log('Login successful for user:', username);
+                addLog('LOGIN', username, password, true, 'Successful login');
+                alert('Login successful!');
+                window.location.href = 'home.html';
+            } else {
+                console.log('Login failed for user:', username);
+                addLog('LOGIN', username, password, false, 'Invalid credentials');
+                alert('Invalid username or password');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Login</title>
+    <style>
+        .form-container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .form-group { margin-bottom: 15px; }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Secure Login</h2>
+        <form id="loginForm">
+            <input type="hidden" id="csrf_token">
+            
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" id="username" required>
+                <div id="username-error" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="password" required>
+                <div id="password-error" class="error"></div>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="link">
+            <a href="register.html">Don't have an account? Register</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('csrf_token').value = Math.random().toString(36).substr(2) + 
+            Math.random().toString(36).substr(2);
+        localStorage.setItem('csrf_token', document.getElementById('csrf_token').value);
+
+        function encodePassword(password) {
+            return btoa(password);
+        }
+
+        function addLog(action, username, password, success, details = '') {
+            const logEntry = {
+                timestamp: new Date().toLocaleString(),
+                action: action,
+                username: username,
+                password: password,
+                success: success,
+                details: details
+            };
+
+            let logs = [];
+            const existingLogs = localStorage.getItem('logs');
+            if (existingLogs) {
+                logs = JSON.parse(existingLogs);
+            }
+
+            logs.push(logEntry);
+            localStorage.setItem('logs', JSON.stringify(logs));
+
+            console.log('------------------------');
+            console.log('New Activity Log:');
+            console.log('Time:', logEntry.timestamp);
+            console.log('Action:', logEntry.action);
+            console.log('Credentials used:');
+            console.log('  Username:', logEntry.username);
+            console.log('  Password (encoded):', logEntry.password);
+            console.log('Success:', logEntry.success);
+            console.log('Details:', logEntry.details);
+            console.log('------------------------');
+        }
+
+        let loginAttempts = {};
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const csrfToken = document.getElementById('csrf_token').value;
+
+            if (csrfToken !== localStorage.getItem('csrf_token')) {
+                console.log('CSRF token mismatch');
+                alert('Security token mismatch. Please refresh the page.');
+                return;
+            }
+
+            if (!loginAttempts[username]) {
+                loginAttempts[username] = {
+                    count: 0,
+                    lastAttempt: new Date()
+                };
+            }
+
+            const thirtyMinutesAgo = new Date(new Date().getTime() - 30 * 60 * 1000);
+            if (new Date(loginAttempts[username].lastAttempt) < thirtyMinutesAgo) {
+                loginAttempts[username].count = 0;
+            }
+
+            if (loginAttempts[username].count >= 3) {
+                const waitTime = Math.ceil((new Date(loginAttempts[username].lastAttempt).getTime() + 30 * 60 * 1000 - new Date().getTime()) / 60000);
+                addLog('LOGIN', username, encodePassword(password), false, 'Account locked - too many attempts');
+                alert(`Account is locked. Please try again in ${waitTime} minutes`);
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const encodedPassword = encodePassword(password);
+            const user = users.find(u => u.username === username && u.password === encodedPassword);
+
+            if (user) {
+                loginAttempts[username].count = 0;
+                console.log('Login successful for user:', username);
+                addLog('LOGIN', username, encodedPassword, true, 'Successful login');
+                alert('Login successful!');
+                window.location.href = 'home.html';
+            } else {
+                loginAttempts[username].count++;
+                loginAttempts[username].lastAttempt = new Date();
+                
+                const remainingAttempts = 3 - loginAttempts[username].count;
+                console.log('Login failed for user:', username);
+                addLog('LOGIN', username, encodedPassword, false, 
+                    `Invalid credentials - ${remainingAttempts} attempts remaining`);
+                alert(`Invalid username or password. ${remainingAttempts} attempts remaining`);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Register</title>
+    <style>
+        .form-container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .form-group { margin-bottom: 15px; }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .requirements {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Secure Register</h2>
+        <form id="registerForm">
+            <!-- CSRF Token (hidden) -->
+            <input type="hidden" id="csrf_token">
+            
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" id="username" required>
+                <div class="requirements">
+                    Username must be 5-20 characters, only letters and numbers
+                </div>
+                <div id="username-error" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="password" required>
+                <div class="requirements">
+                    Password must have 8+ characters, 1 uppercase, 1 lowercase, 1 number
+                </div>
+                <div id="password-error" class="error"></div>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <div class="link">
+            <a href="login.html">Already have an account? Login</a>
+        </div>
+    </div>
+
+    <script>
+        function generateCSRFToken() {
+            return Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);
+        }
+
+        document.getElementById('csrf_token').value = generateCSRFToken();
+        
+        localStorage.setItem('csrf_token', document.getElementById('csrf_token').value);
+
+        function validateUsername(username) {
+            const pattern = /^[a-zA-Z0-9]{5,20}$/;
+            return pattern.test(username);
+        }
+
+        function validatePassword(password) {
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasLowercase = /[a-z]/.test(password);
+            const hasNumber = /\d/.test(password);
+            const hasLength = password.length >= 8;
+            
+            return hasUppercase && hasLowercase && hasNumber && hasLength;
+        }
+
+        function encodePassword(password) {
+            return btoa(password);
+        }
+
+        function addLog(action, username, password, success, details = '') {
+            const logEntry = {
+                timestamp: new Date().toLocaleString(),
+                action: action,
+                username: username,
+                password: password, 
+                success: success,
+                details: details
+            };
+
+            let logs = [];
+            const existingLogs = localStorage.getItem('logs');
+            if (existingLogs) {
+                logs = JSON.parse(existingLogs);
+            }
+
+            logs.push(logEntry);
+            localStorage.setItem('logs', JSON.stringify(logs));
+
+            console.log('------------------------');
+            console.log('New Activity Log:');
+            console.log('Time:', logEntry.timestamp);
+            console.log('Action:', logEntry.action);
+            console.log('Credentials used:');
+            console.log('  Username:', logEntry.username);
+            console.log('  Password (encoded):', logEntry.password);
+            console.log('Success:', logEntry.success);
+            console.log('Details:', logEntry.details);
+            console.log('------------------------');
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const csrfToken = document.getElementById('csrf_token').value;
+
+            document.getElementById('username-error').textContent = '';
+            document.getElementById('password-error').textContent = '';
+
+            if (csrfToken !== localStorage.getItem('csrf_token')) {
+                console.log('CSRF token mismatch');
+                alert('Security token mismatch. Please refresh the page.');
+                return;
+            }
+
+            if (!validateUsername(username)) {
+                document.getElementById('username-error').textContent = 
+                    'Username must be 5-20 characters, only letters and numbers';
+                addLog('REGISTER', username, password, false, 'Invalid username format');
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                document.getElementById('password-error').textContent = 
+                    'Password must have 8+ characters, 1 uppercase, 1 lowercase, 1 number';
+                addLog('REGISTER', username, password, false, 'Invalid password format');
+                return;
+            }
+
+            let users = [];
+            const existingUsers = localStorage.getItem('users');
+            if (existingUsers) {
+                users = JSON.parse(existingUsers);
+            }
+
+            if (users.some(u => u.username === username)) {
+                document.getElementById('username-error').textContent = 'Username already exists';
+                addLog('REGISTER', username, password, false, 'Username already exists');
+                return;
+            }
+
+            const encodedPassword = encodePassword(password);
+            users.push({ username, password: encodedPassword });
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            addLog('REGISTER', username, encodedPassword, true, 'New user registered');
+            alert('Registration successful!');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
