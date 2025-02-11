@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure File Upload System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .upload-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .file-input-container {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .file-input-container:hover {
+            border-color: #007bff;
+        }
+        .file-input-container.dragover {
+            background-color: #e3f2fd;
+            border-color: #007bff;
+        }
+        .upload-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .upload-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+            display: none;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .error-message {
+            color: #dc3545;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #dc3545;
+            border-radius: 4px;
+            display: none;
+        }
+        .success-message {
+            color: #28a745;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #28a745;
+            border-radius: 4px;
+            display: none;
+        }
+        .file-list {
+            margin-top: 20px;
+        }
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+        .logs-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            font-family: monospace;
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Secure File Upload System</h1>
+        <div class="file-input-container" id="dropZone">
+            <p>Drag & Drop files here or click to select</p>
+            <input type="file" id="fileInput" multiple style="display: none">
+        </div>
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <button class="upload-btn" id="uploadBtn" disabled>Upload Files</button>
+        <div class="file-list" id="fileList"></div>
+        <div class="logs-container" id="logsContainer">
+            <h3>System Logs</h3>
+            <div id="logEntries"></div>
+        </div>
+    </div>
+
+    <script>
+        class FileUploadHandler {
+            constructor() {
+                this.allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+                this.maxFileSize = 5 * 1024 * 1024;
+                this.uploadedFiles = new Map();
+                this.errorLog = [];
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                const dropZone = document.getElementById('dropZone');
+                const fileInput = document.getElementById('fileInput');
+                const uploadBtn = document.getElementById('uploadBtn');
+
+                fileInput.addEventListener('change', (e) => this.handleFileSelection(e.target.files));
+                dropZone.addEventListener('click', () => fileInput.click());
+                dropZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('dragover');
+                });
+                dropZone.addEventListener('dragleave', () => {
+                    dropZone.classList.remove('dragover');
+                });
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('dragover');
+                    this.handleFileSelection(e.dataTransfer.files);
+                });
+                uploadBtn.addEventListener('click', () => this.uploadFiles());
+            }
+
+            handleFileSelection(files) {
+                const fileList = document.getElementById('fileList');
+                fileList.innerHTML = '';
+                this.selectedFiles = Array.from(files);
+
+                this.selectedFiles.forEach(file => {
+                    const validation = this.validateFile(file);
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.innerHTML = `
+                        <span>${file.name} (${this.formatFileSize(file.size)})</span>
+                        <span style="color: ${validation.isValid ? 'green' : 'red'}">
+                            ${validation.isValid ? 'Valid' : 'Invalid'}
+                        </span>
+                    `;
+                    fileList.appendChild(fileItem);
+                });
+
+                document.getElementById('uploadBtn').disabled = this.selectedFiles.length === 0;
+            }
+
+            validateFile(file) {
+                const errors = [];
+                if (!this.allowedTypes.includes(file.type)) {
+                    errors.push(`Invalid file type. Allowed types: ${this.allowedTypes.join(', ')}`);
+                }
+                if (file.size > this.maxFileSize) {
+                    errors.push('File size exceeds 5MB limit');
+                }
+                if (/[<>:"/\\|?*]/.test(file.name)) {
+                    errors.push('File name contains invalid characters');
+                }
+                return {
+                    isValid: errors.length === 0,
+                    errors: errors
+                };
+            }
+
+            async uploadFiles() {
+                const progressBar = document.getElementById('progressBar');
+                const progressBarFill = document.getElementById('progressBarFill');
+                const errorMessage = document.getElementById('errorMessage');
+                const successMessage = document.getElementById('successMessage');
+
+                progressBar.style.display = 'block';
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'none';
+
+                try {
+                    for (let i = 0; i < this.selectedFiles.length; i++) {
+                        const file = this.selectedFiles[i];
+                        const validation = this.validateFile(file);
+
+                        if (!validation.isValid) {
+                            throw new Error(`Invalid file: ${file.name}\n${validation.errors.join('\n')}`);
+                        }
+
+                        const progress = ((i + 1) / this.selectedFiles.length) * 100;
+                        progressBarFill.style.width = `${progress}%`;
+                        await this.processFile(file);
+                    }
+
+                    successMessage.textContent = 'All files uploaded successfully!';
+                    successMessage.style.display = 'block';
+                    this.log('Upload completed successfully');
+                } catch (error) {
+                    errorMessage.textContent = error.message;
+                    errorMessage.style.display = 'block';
+                    this.logError(error);
+                } finally {
+                    setTimeout(() => {
+                        progressBar.style.display = 'none';
+                        progressBarFill.style.width = '0%';
+                    }, 1000);
+                }
+            }
+
+            async processFile(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    const timeout = setTimeout(() => {
+                        reader.abort();
+                        reject(new Error('File processing timeout'));
+                    }, 30000);
+
+                    reader.onload = () => {
+                        clearTimeout(timeout);
+                        setTimeout(resolve, 1000);
+                    };
+
+                    reader.onerror = () => {
+                        clearTimeout(timeout);
+                        reject(new Error('File reading failed'));
+                    };
+
+                    let retryCount = 0;
+                    const maxRetries = 3;
+
+                    const attemptRead = () => {
+                        try {
+                            reader.readAsArrayBuffer(file);
+                        } catch (error) {
+                            if (retryCount < maxRetries) {
+                                retryCount++;
+                                setTimeout(attemptRead, 1000 * retryCount);
+                            } else {
+                                reject(new Error(`Failed after ${maxRetries} attempts`));
+                            }
+                        }
+                    };
+
+                    attemptRead();
+                });
+            }
+
+            formatFileSize(bytes) {
+                const units = ['B', 'KB', 'MB', 'GB'];
+                let size = bytes;
+                let unitIndex = 0;
+
+                while (size >= 1024 && unitIndex < units.length - 1) {
+                    size /= 1024;
+                    unitIndex++;
+                }
+
+                return `${size.toFixed(1)} ${units[unitIndex]}`;
+            }
+
+            log(message) {
+                const logEntry = {
+                    timestamp: new Date(),
+                    message: message
+                };
+
+                const logEntries = document.getElementById('logEntries');
+                const entry = document.createElement('div');
+                entry.className = 'log-entry';
+                entry.textContent = `[${logEntry.timestamp.toLocaleTimeString()}] ${logEntry.message}`;
+                logEntries.appendChild(entry);
+                logEntries.scrollTop = logEntries.scrollHeight;
+            }
+
+            logError(error) {
+                const errorEntry = {
+                    timestamp: new Date(),
+                    error: error.message,
+                    stack: error.stack
+                };
+                this.errorLog.push(errorEntry);
+                this.log(`Error: ${error.message}`);
+            }
+        }
+
+        const uploader = new FileUploadHandler();
+    </script>
+</body>
+</html>
