@@ -1,0 +1,432 @@
+1. Zamonaviy dasturiy tizimlardagi eng katta muammo nimada?
+a) Ma'lumotlar hajmi va murakkabligi
+b) Protsessor quvvati yetishmasligi
+c) Internet tezligi
+d) Xotira hajmi
+
+2. O'z-o'zini moslashtiradigan tizimlar qanday ishlaydi?
+a) Ma'lumotlarni siqib saqlaydi
+b) Muntazam yangilanib turadi
+c) Foydalanuvchi so'rovlarini navbatga qo'yadi
+d) Foydalanuvchilar soni oshganda avtomatik ravishda qo'shimcha resurslarni ishga tushiradi
+
+3. Tizimning eng sekin ishlash ko'rsatkichi nima deb ataladi?
+a) Eng yuqori kechikish vaqti
+b) O'rtacha tezlik
+c) Eng yuqori tezlik
+d) Minimal tezlik
+
+4. Tizim nosozligi va tizim ishdan chiqishi o'rtasidagi farq nima?
+a) Nosozlik faqat texnik, ishdan chiqish inson xatosi tufayli
+b) Ikkalasi bir xil holat
+c) Nosozlikni tuzatib bo'lmaydi, ishdan chiqishni tuzatsa bo'ladi
+d) Nosozlik - tizimning bir qismi xato ishlashi, ishdan chiqish - butun tizim to'xtashi
+
+5. Tizimning kengayish imkoniyati deganda nimani tushunasiz?
+a) Foydalanuvchilar soni oshganda ham samarali ishlashni davom ettirish
+b) Tizimning tez ishlashi
+c) Katta hajmda ma'lumot saqlash
+d) Xotira hajmini oshirish
+
+6. Umumiy javob vaqti va kutish vaqti o'rtasidagi farq nimada?
+a) Javob vaqti sekundlarda, kutish vaqti millisekundlarda
+b) Javob vaqti - jami vaqt, kutish vaqti - navbatda turish vaqti
+c) Bir xil tushuncha
+d) Javob vaqti server ishlovi, kutish vaqti tarmoq kechikishi
+
+7. Tizimni qo'llab-quvvatlashning uch asosiy yo'nalishi qaysilar?
+a) Kengayish, ishonchlilik, xavfsizlik
+b) Tezlik, xavfsizlik, ishonchlilik
+c) Barqarorlik, izchillik, samaradorlik
+d) Boshqaruvchanlik, soddalik, rivojlanish imkoniyati
+
+8. 99% (percentile) ko'rsatkich nima ma'noni anglatadi?
+a) So'rovlarning 99% belgilangan vaqtdan tez bajarilishi
+b) Tizim 99% vaqt ishlamoqda
+c) So'rovlarning 99% muvaffaqiyatli
+d) 99% xatosiz ishlash
+
+9. Tasodifiy murakkablik nima?
+a) Muammoning o'ziga xos bo'lmagan, dasturlash yechimidan kelib chiqqan qiyinchiliklar
+b) Dasturlash paytidagi xatolar
+c) Foydalanuvchi xatolari
+d) Tizimning kutilmagan xatti-harakatlari
+
+10. Mustaqil komponentli arxitektura nima?
+a) Har bir qism alohida ishlaydi
+b) Ma'lumot almashish yo'q
+c) Ishni bir necha kompyuterlar o'rtasida taqsimlash
+d) Markazlashtirilmagan boshqaruv
+
+11. Oldini oluvchi boshqaruv nima?
+a) Muammolar yuzaga kelishidan oldin ularni hal qilish
+b) Xatolarni bashorat qilish
+c) Tizimni doimiy kuzatish
+d) Avtomatik tuzatish
+
+12. Navbat boshidagi to'siq muammosi nima?
+a) Xotira yetishmasligi
+b) Tarmoq uzilishlari
+c) Protsessor ortiqcha yuklanishi
+d) Bitta sekin so'rov keyingi barcha so'rovlarni kechiktirishi
+
+13. Tizimning moslashuvchanlik xususiyati nimani anglatadi?
+a) O'z-o'zini takomillashtirish
+b) O'zgaruvchan talablarga moslasha olish qobiliyati
+c) Yangi texnologiyalarni qo'llay olish
+d) Rivojlanish tezligi
+
+14. Qachon tizim ishonchsiz deb hisoblanadi?
+a) Ko'p resurs talab qilganda
+b) Sekin ishlaganda
+c) Nosozliklar yuzaga kelganda to'g'ri ishlay olmaganda
+d) Murakkab bo'lganda
+
+15. Bosqichli yangilash nima?
+a) Tizimning har bir qismini navbat bilan yangilash
+b) Tizimni to'liq yangilash
+c) Barcha serverlarni bir vaqtda yangilash
+d) Yangi versiyani ishga tushirish
+
+16. Kechikishlarning ko'payish muammosi qanday holatda yuzaga keladi?
+
+
+17. Tasodifiy xatoliklarni sinovdan o'tkazish nima uchun kerak?
+
+18. Tizimli xato va tasodifiy xato o'rtasidagi muhim farq nima?
+
+
+19. Mavhumlashtirish printsipining eng to'g'ri ta'rifi qaysi?
+
+
+20. Xizmat sifati maqsadlari va xizmat ko'rsatish shartnomasi o'rtasidagi asosiy farq nimada?
+
+
+21. Ma'lumotlar modellarining qaysi xususiyati zamonaviy NoSQL ma'lumotlar bazalarining ikki asosiy yo'nalishga bo'linishiga olib keldi?
+a) Hujjatlar va jadvallar o'rtasidagi farq
+b) Hujjatga asoslangan va grafga asoslangan yondashuvlar
+c) Relyatsion va ierarxik modellar o'rtasidagi farq
+d) Ma'lumotlarni saqlash va so'rovlar yuborish usullari
+
+22. Graph ma'lumotlar bazasidagi 'vertex' va 'edge' tushunchalari o'rtasidagi asosiy farq nimada?
+a) Vertex faqat ma'lumotlarni saqlaydi, edge esa aloqalarni
+b) Edge faqat bir yo'nalishli bo'lishi mumkin
+c) Vertex ma'lumotlarni va xususiyatlarni saqlaydi, edge esa vertexlar orasidagi munosabatlarni va xususiyatlarni ifodalaydi
+d) Vertex faqat bitta edge ga ega bo'lishi mumkin
+
+23. SPARQL so'rov tilining Cypher'dan asosiy farqi nimada?
+a) Murakkab so'rovlarni bajarish imkoniyati
+b) RDF ma'lumotlar modeli bilan ishlash va predikatlardan foydalanish
+c) Graph ma'lumotlar bilan ishlash qobiliyati
+d) So'rovlarni tezroq bajarish
+
+24. Datalog qanday turdagi so'rovlarni bajarishda eng samarali hisoblanadi?
+a) Oddiy ma'lumotlarni qidirish
+b) Murakkab rekursiv qoidalar va munosabatlarni talab qiluvchi so'rovlar
+c) Faqat graph ma'lumotlar bilan ishlash
+d) Real vaqtda ma'lumotlarni yangilash
+
+25. Document-oriented ma'lumotlar bazasining qanday holatlarda kamchiliklari namoyon bo'ladi?
+a) Ko'p ma'lumotlarni saqlashda
+b) Bir nechta hujjatlar orasidagi munosabatlarni boshqarishda
+c) Ko'p-ko'pga (many-to-many) munosabatlarni samarali boshqarishda
+d) Ma'lumotlarni tezkor qidirishda
+
+26. MapReduce va deklarativ so'rov tillari o'rtasidagi asosiy farq nimada?
+a) MapReduce parallel qayta ishlashni qo'llab-quvvatlaydi
+b) Deklarativ tillar faqat oddiy so'rovlarni bajaradi
+c) MapReduce kod yozishni talab qiladi, deklarativ tillar esa natijani tavsiflashga asoslangan
+d) MapReduce faqat katta ma'lumotlar uchun ishlatiladi
+
+27. Relyatsion ma'lumotlar bazasida graph ma'lumotlarini saqlashning asosiy muammosi nima?
+a) Ma'lumotlarni saqlash imkoniyati yo'qligi
+b) O'zgaruvchan uzunlikdagi yo'llarni so'rash murakkabligi
+c) Graph tuzilmalarini saqlash imkoniyati yo'qligi
+d) Ma'lumotlarni yangilash qiyinligi
+
+28. Semantic web kontekstida RDF qanday vazifani bajaradi?
+a) Faqat ma'lumotlarni saqlash
+b) Web-sahifalarni indekslash
+c) Mashinalar o'qiy oladigan ma'lumotlarni standartlashtirilgan formatda taqdim etish
+d) Foydalanuvchilar uchun ma'lumotlarni vizualizatsiya qilish
+
+29. Graph ma'lumotlar bazasida 'property graph' modelining muhim afzalligi nimada?
+a) Vertex va edgelar uchun xususiyatlarni saqlash imkoniyati
+b) Faqat ma'lumotlarni saqlash
+c) Tezkor qidirish imkoniyati
+d) Ma'lumotlarni oson yangilash
+
+30. Schema-on-read va schema-on-write yondashuvlari o'rtasidagi asosiy farq nimada?
+a) Saqlash hajmi
+b) Ma'lumotlarni o'qish tezligi
+c) Schema-on-read sxemani o'qish vaqtida tekshiradi, schema-on-write esa yozish vaqtida
+d) Ma'lumotlarni indekslash usuli
+
+31. Triple-store ma'lumotlar bazasining asosiy tushunchalarini qanday ifodalash mumkin?
+a) Vertex, edge, va property
+b) Subject, predicate, va object
+c) Key, value, va timestamp
+d) Table, row, va column
+
+32. NoSQL ma'lumotlar bazalarida schema evolutionni qanday amalga oshirish mumkin?
+a) Faqat yangi jadval yaratish orqali
+b) Schema-on-read yordamida va dastur kodida yangi formatni qo'llab-quvvatlash
+c) Ma'lumotlar bazasini to'liq qayta yaratish orqali
+d) Sxemani o'zgartirish mumkin emas
+
+33. Datalog tilida rekursiv qoidalarning asosiy vazifasi nima?
+a) Ma'lumotlarni saqlash
+b) Murakkab munosabatlarni ifodalash va transitiv bog'liqliklarni hisoblash
+c) Ma'lumotlarni indekslash
+d) So'rovlarni optimallashtirish
+
+34. Graph ma'lumotlar bazasida traversal operatsiyasining samaradorligi nimaga bog'liq?
+a) Ma'lumotlar bazasining hajmiga
+b) Indekslar mavjudligiga
+c) Edge va vertexlarning o'zaro bog'liqligi va indekslash strategiyasiga
+d) Faqat vertexlar soniga
+
+35. Document ma'lumotlar bazasida denormalizatsiyaning asosiy maqsadi nima?
+a) Ma'lumotlar hajmini kamaytirish
+b) So'rovlar sonini kamaytirish va ishlash tezligini oshirish
+c) Ma'lumotlar yaxlitligini ta'minlash
+d) Sxemani soddalashtirish
+
+36. Graph ma'lumotlar bazasida path traversal algoritmlarining optimallashtirishda qanday asosiy omillar hisobga olinadi?
+a) Faqat vertexlar soni
+b) Graph zichligi, indekslar strategiyasi va ma'lumotlar tuzilmasi
+c) Faqat edgelar soni
+d) Faqat ma'lumotlar hajmi
+
+37. Ma'lumotlar modeli evolyutsiyasida ierarxik modeldan relyatsion modelga o'tishning asosiy sababi nima?
+a) Tezkorlikni oshirish
+b) Ko'p-ko'pga munosabatlarni samarali boshqarish zarurati
+c) Ma'lumotlar hajmini kamaytirish
+d) Dasturlash tillarining rivojlanishi
+
+38. Graph ma'lumotlar bazasida query optimizatsiyaning murakkab jihati nimada?
+a) Faqat ma'lumotlarni saqlash tezligi
+b) Path traversal variantlarining ko'pligi va ulardan eng optimal yo'lni tanlash muammosi
+c) Faqat ma'lumotlarni indekslash
+d) Faqat ma'lumotlarni yangilash tezligi
+
+39. Polyglot persistence strategiyasining asosiy murakkabligi nimada?
+a) Turli ma'lumotlar bazalarini o'rnatish
+b) Ma'lumotlar modellari orasidagi muvofiqlashtirishni ta'minlash va tranzaksiyalarni boshqarish
+c) Dasturchilarni o'qitish
+d) Ma'lumotlarni saqlash hajmi
+
+40. Semantic web texnologiyalarida ontologiyalarning roli qanday?
+a) Faqat ma'lumotlarni saqlash
+b) Ma'lumotlarni semantik bog'lash va bilimlarni formal ravishda tasvirlash
+c) Web-sahifalarni indekslash
+d) Foydalanuvchi interfeysini yaratish
+
+41. Web ilovaning xavfsizlik mexanizmlarida qaysi komponent eng muhim hisoblanadi?
+a) Foydalanuvchi kirishini boshqarish
+b) Ma'lumotlar bazasi xavfsizligi
+c) Serverning samaradorligi
+d) Tizim monitoringi
+
+42. Web ilovada xatolarni qayta ishlashda qaysi yondashuv eng xavfsiz hisoblanadi?
+a) Xatolarni e'tiborsiz qoldirish
+b) Barcha xatolarni foydalanuvchiga ko'rsatish
+c) Faqat umumiy xato xabarini ko'rsatish
+d) Xatoni yozib olish va foydalanuvchiga xavfsiz xabar ko'rsatish
+
+43. Kirish nazoratining eng muhim vazifasi nimadan iborat?
+a) Tizimni tezlashtirish
+b) Foydalanuvchilarning huquqlarini tekshirish
+c) Ma'lumotlarni zaxiralash
+d) Foydalanuvchilar so'rovlarini filtrlash
+
+44. Ma'muriy funksiyalarni himoyalashda qaysi xavfsizlik yondashuvi eng muhim?
+a) Maxsus shifrlash algoritmlaridan foydalanish
+b) Alohida autentifikatsiya tizimini yaratish
+c) Ko'p qatlamli himoya mexanizmlarini qo'llash
+d) Faqat mahalliy tarmoqdan kirishga ruxsat berish
+
+45. Xavfsizlik tekshiruvini yuritishda yozuvlarni alohida avtonom tizimda saqlash nima uchun muhim?
+a) Ruxsatsiz o'zgartirishlardan himoya qilish uchun
+b) Tezlikni oshirish uchun
+c) Xotira tejash uchun
+d) Yozuvlar tahlilini osonlashtirish uchun
+
+46. Sessiya boshqaruvida qaysi holat eng xavfli zaiflikni ko'rsatadi?
+a) Sessiyaning tez tugashi
+b) Sessiya ma'lumotlarini kuki-faylda saqlash
+c) Oldindan aytib berish mumkin bo'lgan sessiya belgilari
+d) Uzoq muddatli sessiya
+
+47. Web ilovada zararli faoliyat aniqlanganda, eng to'g'ri dastlabki harakat nima?
+a) Ilovani to'xtatish
+b) IP-manzilni darhol bloklash
+c) Hujumchiga ogohlantirish yuborish
+d) Hodisani qayd etish va kuzatishni davom ettirish
+
+48. Web ilova ma'muri interfeysida foydalanuvchi ma'lumotlarini ko'rsatishda qanday xavf mavjud?
+a) Ma'lumotlar bazasi buzilishi
+b) Tizim yuklanishi
+c) Ma'lumotlar maxfiyligi buzilishi
+d) Yuqori imtiyozli sessiyaga XSS hujumi
+
+49. Web ilovada xavfsizlik monitoringini avtomatlashtirish uchun eng samarali yondashuv qaysi?
+a) Anomaliyalarni aniqlash va tahlil qilish tizimini joriy etish
+b) Barcha xatolarni ma'murlarga yuborish
+c) Tizimni davriy tekshirish
+d) Foydalanuvchi seanslarini kuzatib borish
+
+50. Web ilovada sessiya belgilarini boshqarishda qaysi usul eng xavfsiz?
+a) URL parametrlarida saqlash
+b) Lokal xotirada saqlash
+c) Yashirin formada saqlash
+d) Kuki-fayllarda xavfsiz parametrlar bilan saqlash
+
+51. Xavfsizlik mexanizmlarini sinovdan o'tkazishda nima eng muhim?
+a) Barcha imkoniy zaifliklarni tekshirish
+b) Tezlikni tekshirish
+c) Foydalanuvchi interfeysini tekshirish
+d) Server resurslarini tekshirish
+
+52. Chegaraviy tekshirish yondashuvining asosiy afzalligi nimada?
+a) Osonroq amalga oshirilishi
+b) Tezroq ishlashi
+c) Har bir komponent o'z kirishini mustaqil tekshirishi
+d) Kamroq resurs sarflashi
+
+53. Web ilovada xavfsizlik tekshiruvini yuritishda qaysi ma'lumotlarni qayd etish muhim?
+a) Faqat administrator harakatlari
+b) Faqat xatolar
+c) Faqat muvaffaqiyatli kirishlar
+d) Barcha autentifikatsiya va muhim operatsiyalar
+
+54. Kiruvchi ma'lumotlarni tekshirishning eng samarali usuli qaysi?
+a) Hech qanday tekshirish o'tkazmaslik
+b) Faqat xavfli belgilarni o'chirish
+c) Barcha ma'lumotlarni rad etish
+d) Faqat ma'lum formatdagi ma'lumotlarni qabul qilish
+
+55. Kiruvchi ma'lumotlarni tekshirishda 'Yaxshi ma'lumotlarni qabul qilish' yondashuvi nima uchun 'Yomon ma'lumotlarni rad etish' yondashuvidan yaxshiroq?
+a) Texnik xizmat ko'rsatish osonroq
+b) Tezroq ishlaydi
+c) Kamroq resurs talab qiladi
+d) Xavfsiz naqshlarni aniq belgilaydi
+
+56. NULL baytlarni noto'g'ri qayta ishlash natijasida qanday zaiflik yuzaga kelishi mumkin?
+
+57. Ko'p bosqichli kiruvchi ma'lumotlarni tekshirishda nima eng muhim?
+
+
+58. Web ilovada kodlangan ma'lumotlarni qayta ishlashda qanday xavf mavjud?
+
+
+59. Web ilovada ma'lumotlar bazasi bilan ishlashda SQL in'ektsiyalardan himoyalanishning eng samarali usuli qaysi?
+
+
+60. Ma'lumotlarni tozalashda qanday muammo yuzaga kelishi mumkin?
+
+
+61. HTTP so'rovlarida Transfer-Encoding sarlavhasining asosiy vazifasi nima?
+a) Ma'lumotlarni qismlab uzatish uchun kodlash
+b) HTTP so'rovini shifrlash
+c) Ma'lumotlarni siqish
+d) Ma'lumotlarni Base64 formatiga o'tkazish
+
+62. REST arxitekturasida resurslarni nomlashning qaysi usuli to'g'ri?
+a) /api/execute?method=getUserProfile&id=123
+b) /api/getUser.php?userid=123
+c) /api/search?id=123&type=user
+d) /api/users/123/profile
+
+63. AJAX so'rovlarida XMLHttpRequest obyektining muhim xususiyati qaysi?
+a) Sahifani yangilamasdan so'rov yuborish
+b) Faqat XML formatidagi ma'lumotlarni yuborish
+c) Faqat GET so'rovlarini yuborish
+d) Faqat asinxron so'rovlarni amalga oshirish
+
+64. Web-serverlarda 'virtual hosting' texnologiyasi qanday ishlaydi?
+a) URL parametrlari orqali yo'naltirish
+b) DNS serveri orqali marshrutlash
+c) Host sarlavhasi orqali domenni aniqlash
+d) IP manzil orqali serverlarni ajratish
+
+65. Same-Origin Policy quyidagilarning qaysi biriga ruxsat bermaydi?
+a) Boshqa domendagi cookie'larni o'qish
+b) Boshqa domendagi rasmlarni yuklash
+c) Boshqa domendagi JavaScript faylini yuklash
+d) Boshqa domenga AJAX so'rovi yuborish
+
+66. Web-ilovada Base64 kodlash qaysi holatda eng maqbul?
+a) Cookie'larni shifrlash
+b) Ma'lumotlarni shifrlash
+c) Ikkilik ma'lumotlarni URL orqali uzatish
+d) Xavfsiz parollarni saqlash
+
+67. HTTP protokolida 'chunked' transfer-encoding nima uchun ishlatiladi?
+a) So'rovlarni keshlash
+b) Ma'lumotlarni siqish uchun
+c) Ma'lumotlarni shifrlash
+d) Katta hajmli ma'lumotlarni qismlab uzatish
+
+68. Unicode kodlashning UTF-8 formati qanday ishlaydi?
+a) Faqat ASCII belgilarni kodlaydi
+b) 32 bitli kodlash
+c) Har doim 8 bit ishlatadi
+d) O'zgaruvchan uzunlikdagi kodlash
+
+69. Web ilovada ViewState mexanizmi qanday maqsadda ishlatiladi?
+a) Ma'lumotlarni keshlash
+b) Xavfsizlikni ta'minlash
+c) Sahifa holatini mijoz tomonida saqlash
+d) Foydalanuvchi sessiyasini saqlash
+
+70. HTML5 da WebSocket protokolining asosiy xususiyati nima?
+a) Ma'lumotlarni siqish
+b) Katta hajmli fayllarni uzatish
+c) Yuqori xavfsizlik
+d) Ikki tomonlama aloqa o'rnatish
+
+71. Web-ilovada CORS (Cross-Origin Resource Sharing) politikasi qanday sozlanadi?
+a) JavaScript kodida
+b) Server konfiguratsiyasida
+c) HTML meta-teglari orqali
+d) HTTP sarlavhalari orqali
+
+72. HTTP so'rovlarida If-None-Match sarlavhasi qanday vazifani bajaradi?
+a) So'rov marshrutlash
+b) So'rov shifrlash
+c) Keshlangan resursni tekshirish
+d) So'rov autentifikatsiyasi
+
+73. JSON Web Token (JWT) strukturasi qanday qismlardan iborat?
+a) Token va signature
+b) Header va signature
+c) Header, payload va signature
+d) Header va payload
+
+74. Web-ilovada IndexedDB texnologiyasi nima uchun ishlatiladi?
+a) Xavfsiz ma'lumotlarni saqlash
+b) Mijoz tomonida katta hajmli ma'lumotlarni saqlash
+c) Brauzer keshini boshqarish
+d) Server ma'lumotlar bazasini boshqarish
+
+75. Web-ilovada Service Worker mexanizmi qanday vazifani bajaradi?
+a) Ma'lumotlarni shifrlash
+b) Xavfsizlikni ta'minlash
+c) Fon jarayonlarini boshqarish
+d) So'rovlarni keshlash va offline ishlash
+
+76. HTTP/2 protokolida HOL (Head-of-line) blokirovkasi qanday hal qilingan?
+
+
+77. WebAssembly moduli import section da qanday muhim xususiyat bor?
+
+
+78. CSP sandbox direktivi quyidagi qaysi harakatni default holatda TAQIQLAMAYDI?
+
+
+79. WebRTC texnologiyasida ICE (Interactive Connectivity Establishment) kandidatlar qanday tartibda tekshiriladi?
+
+
+80. querySelector API Shadow DOM ichida qanday ishlaydi va :host-context() psevdo-klass bilan qanday farq qiladi?
+
